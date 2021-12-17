@@ -191,7 +191,7 @@ variable "network_policy" {
 variable "node_pools_oauth_scopes" {
   description = "Map of lists containing node oauth scopes by node-pool name"
   type = map(list(string))
-  default = []
+  default = {}
 
 variable "node_pools_labels" {
   description = "Map of maps containing node labels by node-pool name"
@@ -207,11 +207,11 @@ variable "node_pools_metadata" {
 variable "node_pools_taints" {
   description = "Map of lists containing node taints by node-pool name"
   type = map(list(object({ key = string, value = string, effect = string })))
-  default = []
+  default = {}
 }
 
 variable "node_pools_tags" {
   description = "Map of lists containing node network tags by node-pool name"
   type = map(list(string))	
-  default = []
+  default = {}
 }
