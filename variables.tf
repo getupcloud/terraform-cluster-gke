@@ -191,27 +191,61 @@ variable "network_policy" {
 variable "node_pools_oauth_scopes" {
   description = "Map of lists containing node oauth scopes by node-pool name"
   type = map(list(string))
-  default = {}
+  default = {
+    all = []
+
+    default-node-pool = [
+      "https://www.googleapis.com/auth/cloud-platform",
+    ]    
+  }
 
 variable "node_pools_labels" {
   description = "Map of maps containing node labels by node-pool name"
   type = map(map(string))
-  default = {}
+  default = {
+    all = {}
+
+    default-node-pool = {
+      default-node-pool = true
+    }    
+  }
 }
 
 variable "node_pools_metadata" {
   description = "Map of maps containing node metadata by node-pool name"
   type = map(map(string))
-  default = {}
+  default = {
+    all = {}
+
+    default-node-pool = {
+      node-pool-metadata-custom-value = "my-node-pool"
+    }    
+  }
 
 variable "node_pools_taints" {
   description = "Map of lists containing node taints by node-pool name"
   type = map(list(object({ key = string, value = string, effect = string })))
-  default = {}
+  default = {
+    all = []
+
+    default-node-pool = [
+      {
+        key    = "default-node-pool"
+        value  = true
+        effect = "PREFER_NO_SCHEDULE"
+      },
+    ]    
+  }
 }
 
 variable "node_pools_tags" {
   description = "Map of lists containing node network tags by node-pool name"
   type = map(list(string))	
-  default = {}
+  default = {
+    all = []
+
+    default-node-pool = [
+      "default-node-pool",
+    ]
+  }    
 }
