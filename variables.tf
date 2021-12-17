@@ -86,7 +86,7 @@ variable "configure_ip_masq" {
 
 variable "default_max_pods_per_node" {
   description = "The maximum number of pods to schedule per node"
-  type        = int
+  type        = number
   default     = 110
 }
 
@@ -114,7 +114,7 @@ variable "remove_default_node_pool" {
 
 variable "initial_node_count" {
   description = "The number of nodes to create in this cluster's default node pool."
-  type        = int
+  type        = number
   default     = 1
 }
 
