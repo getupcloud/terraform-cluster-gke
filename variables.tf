@@ -1,8 +1,3 @@
-variable "name" {
-  description = "Cluster name"
-  type        = string
-}
-
 variable "description" {
   description = "Cluster description"
   type        = string
@@ -20,12 +15,6 @@ variable "get_kubeconfig_command" {
   default     = "true"
 }
 
-variable "flux_git_repo" {
-  description = "GitRepository URL."
-  type        = string
-  default     = ""
-}
-
 variable "flux_wait" {
   description = "Wait for all manifests to apply"
   type        = bool
@@ -41,26 +30,6 @@ variable "manifests_path" {
 variable "customer_name" {
   description = "Customer name (Informative only)"
   type        = string
-}
-
-variable "cronitor_api_key" {
-  description = "Cronitor API key. Leave empty to destroy"
-  type        = string
-  default     = ""
-}
-
-variable "cronitor_pagerduty_key" {
-  description = "Cronitor PagerDuty key"
-  type        = string
-  default     = ""
-}
-
-variable "manifests_template_vars" {
-  description = "Template vars for use by cluster manifests"
-  type        = any
-  default = {
-    alertmanager_pagerduty_key : ""
-  }
 }
 
 variable "project_id" {
