@@ -1,6 +1,41 @@
+variable "name" {
+  description = "Cluster name"
+  type        = string
+}
+
 variable "description" {
   description = "Cluster description"
   type        = string
+}
+
+variable "flux_git_repo" {
+  description = "GitRepository URL"
+  type        = string
+  default     = ""
+}
+
+variable "cronitor_api_key" {
+  description = "Cronitor API key. Leave empty to destroy"
+  type        = string
+  default     = ""
+}
+
+variable "cronitor_pagerduty_key" {
+  description = "Cronitor PagerDuty key"
+  type        = string
+  default     = ""
+}
+
+variable "api_endpoint" {
+  description = "Kubernetes API endpoint (Informative only)"
+  type        = string
+  default     = ""
+}
+
+variable "manifests_path" {
+  description = "Manifests dir inside GitRepository"
+  type        = string
+  default     = ""
 }
 
 variable "kubeconfig_filename" {
