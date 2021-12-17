@@ -222,6 +222,7 @@ variable "node_pools_metadata" {
       node-pool-metadata-custom-value = "my-node-pool"
     }    
   }
+}
 
 variable "node_pools_taints" {
   description = "Map of lists containing node taints by node-pool name"
