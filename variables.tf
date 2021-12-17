@@ -90,16 +90,22 @@ variable "node_pools" {
 
 variable "maintenance_exclusions" {
   description = "Description: List of maintenance exclusions. A cluster can have up to three"
-  type        = list(object({ name = string, start_time = string, end_time = string }))
+  type        = list(object({ 
+    name = string, 
+    start_time = string, 
+    end_time = string 
+  }))
+  default = []
 }
 
 variable "maintenance_start_time" {
   description = "Time window specified for daily or recurring maintenance operations in RFC3339 format"
   type        = string
+  default     = ""
 }
 
 variable "configure_ip_masq" {
-  description = " Enables the installation of ip masquerading, which is usually no longer required when using aliasied IP addresses. IP masquerading uses a kubectl call, so when you have a private cluster, you will need access to the APIs"
+  description = "Enables the installation of ip masquerading, which is usually no longer required when using aliasied IP addresses. IP masquerading uses a kubectl call, so when you have a private cluster, you will need access to the APIs"
   type        = bool
   default     = false
 }
