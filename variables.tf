@@ -105,7 +105,12 @@ variable "maintenance_start_time" {
 }
 
 variable "configure_ip_masq" {
-  description = "Enables the installation of ip masquerading, which is usually no longer required when using aliasied IP addresses. IP masquerading uses a kubectl call, so when you have a private cluster, you will need access to the APIs"
+  description = <<-EOF
+    Enables the installation of ip masquerading, 
+    which is usually no longer required when using aliasied IP addresses. 
+    IP masquerading uses a kubectl call, so when you have a private cluster, 
+    you will need access to the APIs
+  EOF
   type        = bool
   default     = false
 }
@@ -117,11 +122,11 @@ variable "default_max_pods_per_node" {
 }
 
 variable "kubernetes_version" {
-  description = "
+  description = <<-EOF
     The version of Kubernetes to install 
     Options: https://cloud.google.com/kubernetes-engine/docs/release-notes#current_versions
     Example: 1.20.11-gke.1300
-    "
+  EOF
   type        = string
   default     = "latest"
 }
