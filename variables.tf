@@ -56,12 +56,6 @@ variable "flux_wait" {
   default     = true
 }
 
-variable "manifests_path" {
-  description = "Manifests dir inside GitRepository"
-  type        = string
-  default     = ""
-}
-
 variable "customer_name" {
   description = "Customer name (Informative only)"
   type        = string
