@@ -37,6 +37,9 @@ module "gke" {
   ip_range_services           = var.ip_range_services
   http_load_balancing         = var.http_load_balancing
   horizontal_pod_autoscaling  = var.horizontal_pod_autoscaling
+  network_project_id          = var.network_project_id
+  enable_private_endpoint     = var.enable_private_endpoint
+  enable_private_nodes        = var.enable_private_nodes
   network_policy              = var.network_policy
 
   node_pools                  = var.node_pools
