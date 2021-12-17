@@ -139,7 +139,7 @@ variable "cluster_autoscaling" {
     "max_memory_gb": 0, 
     "min_cpu_cores": 0, 
     "min_memory_gb": 0 
-    }
+  }
 }
 
 variable "grant_registry_access" {
@@ -198,6 +198,7 @@ variable "node_pools_oauth_scopes" {
       "https://www.googleapis.com/auth/cloud-platform",
     ]    
   }
+}
 
 variable "node_pools_labels" {
   description = "Map of maps containing node labels by node-pool name"
