@@ -151,7 +151,18 @@ variable "initial_node_count" {
 
 variable "cluster_autoscaling" {
   description = "Cluster autoscaling configuration"
-  type = object({ enabled = bool min_cpu_cores = number max_cpu_cores = number min_memory_gb = number max_memory_gb = number gpu_resources = list(object({ resource_type = string, minimum = number, maximum = number })) })
+  type = object({ 
+    enabled = bool,
+    min_cpu_cores = number, 
+    max_cpu_cores = number,
+    min_memory_gb = number,
+    max_memory_gb = number,
+    gpu_resources = list(object({ 
+      resource_type = string, 
+      minimum = number, 
+      maximum = number 
+    }))
+  })
   default = { 
     "enabled": false, 
     "gpu_resources": [], 
