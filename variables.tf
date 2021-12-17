@@ -288,3 +288,9 @@ variable "node_pools_tags" {
     ]
   }    
 }
+
+variable "network_project_id" {
+  description = "The project id of the network"
+  type = string
+  default = ""
+}
