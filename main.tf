@@ -26,7 +26,7 @@ module "cronitor" {
 }
 
 module "gke" {
-  source                      = "terraform-google-modules/kubernetes-engine/google"
+  source                      = "terraform-google-modules/kubernetes-engine/google//modules/private-cluster"
   project_id                  = var.project_id
   name                        = var.name
   region                      = var.region
