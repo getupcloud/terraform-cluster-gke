@@ -147,3 +147,71 @@ variable "grant_registry_access" {
   type = bool
   default = false
 }
+
+variable "network" {
+  description = "The VPC network to host the cluster in (required)"
+  type = string
+}
+
+variable "subnetwork" {
+  description = "The subnetwork to host the cluster in (required)"
+  type = string
+}
+
+variable "ip_range_pods" {
+  description = "The name of the secondary subnet ip range to use for pods"
+  type = string
+  default = ""
+}
+
+variable "ip_range_services" {
+  description = "	The name of the secondary subnet range to use for services"
+  type = string
+  default = ""
+}
+
+variable "http_load_balancing" {
+  description = "Whether http load balancing enabled"
+  type = bool
+  default = false
+}
+
+variable "horizontal_pod_autoscaling" {
+  description = "Whether horizontal pod autoscaling enabled"
+  type = bool
+  default = true
+}
+
+variable "network_policy" {
+  description = "Whether network policy enabled"
+  type = bool
+  default = false
+}
+
+variable "node_pools_oauth_scopes" {
+  description = "Map of lists containing node oauth scopes by node-pool name"
+  type = map(list(string))
+  default = []
+
+variable "node_pools_labels" {
+  description = "Map of maps containing node labels by node-pool name"
+  type = map(map(string))
+  default = {}
+}
+
+variable "node_pools_metadata" {
+  description = "Map of maps containing node metadata by node-pool name"
+  type = map(map(string))
+  default = {}
+
+variable "node_pools_taints" {
+  description = "Map of lists containing node taints by node-pool name"
+  type = map(list(object({ key = string, value = string, effect = string })))
+  default = []
+}
+
+variable "node_pools_tags" {
+  description = "Map of lists containing node network tags by node-pool name"
+  type = map(list(string))	
+  default = []
+}
