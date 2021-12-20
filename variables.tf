@@ -310,8 +310,16 @@ variable "master_authorized_networks" {
   type = list(object({ cidr_block = string, display_name = string }))
   default = [
     {
-      cidr_block = "0.0.0.0/0",
-      display_name = "default"
+      cidr_block = "10.0.0.0/8",
+      display_name = "private-class-a"
+    },
+    {
+      cidr_block = "172.16.0.0/12",
+      display_name = "private-class-b"
+    },
+    {
+      cidr_block = "192.168.0.0/16",
+      display_name = "private-class-c"
     }
   ]
 }
