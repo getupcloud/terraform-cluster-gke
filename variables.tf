@@ -330,7 +330,7 @@ variable "impersonate_service_account" {
   default = ""
 }
 
-variable "credential_path" {
-  description = "The path to the credential file"
+variable "service_account_key" {
+  description = "Value of the keyfile for the service account to impersonate"
   type = string
 }
