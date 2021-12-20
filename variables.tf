@@ -304,3 +304,9 @@ variable "enable_private_nodes" {
   description  = "(Beta) Whether nodes have internal IP addresses only"
   default      = false
 }
+
+variable "master_authorized_networks" {
+  description = "List of master authorized networks. If none are provided, disallow external access (except the cluster node IPs, which GKE automatically whitelists)."
+  type = list(object({ cidr_block = string, display_name = string }))
+  default = ["0.0.0.0/0"]
+}
