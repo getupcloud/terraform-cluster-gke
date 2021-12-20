@@ -52,4 +52,5 @@ module "gke" {
   configure_ip_masq           = var.configure_ip_masq
   default_max_pods_per_node   = var.default_max_pods_per_node
   master_authorized_networks  = var.master_authorized_networks
+  impersonate_service_account = var.impersonate_service_account
 }
