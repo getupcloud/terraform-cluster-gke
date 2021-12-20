@@ -323,3 +323,9 @@ variable "master_authorized_networks" {
     }
   ]
 }
+
+variable "impersonate_service_account" {
+  description = "The service account to impersonate for API calls"
+  type = string
+  default = ""
+}
