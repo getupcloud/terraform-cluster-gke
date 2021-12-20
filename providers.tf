@@ -42,5 +42,5 @@ provider "kubernetes" {
 provider "google" {
   project = var.project_id
   region  = var.region
-  credentials = var.credential_path
+  credentials = var.service_account_key
 }
