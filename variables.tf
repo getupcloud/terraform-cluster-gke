@@ -329,3 +329,8 @@ variable "impersonate_service_account" {
   type = string
   default = ""
 }
+
+variable "credential_path" {
+  description = "The path to the credential file"
+  type = string
+}
