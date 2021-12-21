@@ -340,3 +340,9 @@ variable "master_ipv4_cidr_block" {
   type = string
   default = ""
 }
+
+variable "regional" {
+  description = "Whether to create a regional cluster"
+  type = bool
+  default = false
+}
