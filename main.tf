@@ -41,6 +41,7 @@ module "gke" {
   enable_private_endpoint     = var.enable_private_endpoint
   enable_private_nodes        = var.enable_private_nodes
   network_policy              = var.network_policy
+  remove_default_node_pool	  = var.remove_default_node_pool
 
   node_pools                  = var.node_pools
   node_pools_oauth_scopes     = var.node_pools_oauth_scopes
