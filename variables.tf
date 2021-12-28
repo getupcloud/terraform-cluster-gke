@@ -229,12 +229,9 @@ variable "node_pools_oauth_scopes" {
   description = "Map of lists containing node oauth scopes by node-pool name"
   type = map(list(string))
   default = {
-    all = []
-
-    default-node-pool = [
-      "https://www.googleapis.com/auth/cloud-platform",
-    ]    
-  }
+    all = [ "https://www.googleapis.com/auth/cloud-platform" ]
+    app = []
+    infra = []
 }
 
 variable "node_pools_labels" {
@@ -345,4 +342,10 @@ variable "regional" {
   description = "Whether to create a regional cluster"
   type = bool
   default = false
+}
+
+variable "loggging_service" {
+  description = "The logging service that the cluster should write logs to. Available options include logging.googleapis.com, logging.googleapis.com/kubernetes (beta), and none"
+  type = string
+  default = "none"
 }
