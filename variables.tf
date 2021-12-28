@@ -345,7 +345,7 @@ variable "regional" {
   default = false
 }
 
-variable "loggging_service" {
+variable "logging_service" {
   description = "The logging service that the cluster should write logs to. Available options include logging.googleapis.com, logging.googleapis.com/kubernetes (beta), and none"
   type = string
   default = "none"
