@@ -232,6 +232,7 @@ variable "node_pools_oauth_scopes" {
     all = [ "https://www.googleapis.com/auth/cloud-platform" ]
     app = []
     infra = []
+  }
 }
 
 variable "node_pools_labels" {
