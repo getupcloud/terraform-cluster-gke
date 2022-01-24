@@ -14,11 +14,6 @@ variable "customer_name" {
   type        = string
 }
 
-variable "description" {
-  description = "Cluster description"
-  type        = string
-}
-
 variable "flux_git_repo" {
   description = "GitRepository URL"
   type        = string
