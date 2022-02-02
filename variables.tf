@@ -20,6 +20,12 @@ variable "flux_git_repo" {
   default     = ""
 }
 
+variable "flux_version" {
+  description = "Flux version to install"
+  type        = string
+  default     = "v0.15.3"
+}
+
 variable "cronitor_api_key" {
   description = "Cronitor API key. Leave empty to destroy"
   type        = string
