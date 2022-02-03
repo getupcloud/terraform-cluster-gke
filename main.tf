@@ -31,35 +31,35 @@ module "cronitor" {
 data "google_client_config" "default" {}
 
 module "gke" {
-  source                     = "terraform-google-modules/kubernetes-engine/google//modules/private-cluster"
-  project_id                 = var.project_id
-  name                       = var.cluster_name
-  region                     = var.region
-  zones                      = var.zones
-  network                    = var.network
-  subnetwork                 = var.subnetwork
-  ip_range_pods              = var.ip_range_pods
-  ip_range_services          = var.ip_range_services
-  http_load_balancing        = var.http_load_balancing
-  horizontal_pod_autoscaling = var.horizontal_pod_autoscaling
-  network_project_id         = var.network_project_id
-  enable_private_endpoint    = var.enable_private_endpoint
-  enable_private_nodes       = var.enable_private_nodes
-  network_policy             = var.network_policy
-  remove_default_node_pool   = var.remove_default_node_pool
-  logging_service            = var.logging_service
+  source = "terraform-google-modules/kubernetes-engine/google//modules/private-cluster"
 
-  node_pools              = var.node_pools
-  node_pools_oauth_scopes = var.node_pools_oauth_scopes
-  node_pools_labels       = var.node_pools_labels
-  node_pools_metadata     = var.node_pools_metadata
-  node_pools_taints       = var.node_pools_taints
-  node_pools_tags         = var.node_pools_tags
-
-  configure_ip_masq           = var.configure_ip_masq
-  default_max_pods_per_node   = var.default_max_pods_per_node
-  master_authorized_networks  = var.master_authorized_networks
-  impersonate_service_account = var.impersonate_service_account
-  master_ipv4_cidr_block      = var.master_ipv4_cidr_block
-  regional                    = var.regional
+  configure_ip_masq             = var.configure_ip_masq
+  default_max_pods_per_node     = var.default_max_pods_per_node
+  deploy_using_private_endpoint = var.enable_private_endpoint # yes, duplicated
+  enable_private_endpoint       = var.enable_private_endpoint
+  enable_private_nodes          = var.enable_private_nodes
+  horizontal_pod_autoscaling    = var.horizontal_pod_autoscaling
+  http_load_balancing           = var.http_load_balancing
+  impersonate_service_account   = var.impersonate_service_account
+  ip_range_pods                 = var.ip_range_pods
+  ip_range_services             = var.ip_range_services
+  logging_service               = var.logging_service
+  master_authorized_networks    = var.master_authorized_networks
+  master_ipv4_cidr_block        = var.master_ipv4_cidr_block
+  name                          = var.cluster_name
+  network_policy                = var.network_policy
+  network_project_id            = var.network_project_id
+  network                       = var.network
+  node_pools_labels             = var.node_pools_labels
+  node_pools_metadata           = var.node_pools_metadata
+  node_pools_oauth_scopes       = var.node_pools_oauth_scopes
+  node_pools_tags               = var.node_pools_tags
+  node_pools_taints             = var.node_pools_taints
+  node_pools                    = var.node_pools
+  project_id                    = var.project_id
+  regional                      = var.regional
+  region                        = var.region
+  remove_default_node_pool      = var.remove_default_node_pool
+  subnetwork                    = var.subnetwork
+  zones                         = var.zones
 }
