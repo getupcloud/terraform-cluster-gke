@@ -28,6 +28,8 @@ module "cronitor" {
   api_endpoint  = module.gke.endpoint
 }
 
+data "google_client_config" "default" {}
+
 module "gke" {
   source                     = "terraform-google-modules/kubernetes-engine/google//modules/private-cluster"
   project_id                 = var.project_id
