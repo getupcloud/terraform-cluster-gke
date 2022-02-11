@@ -359,9 +359,3 @@ variable "logging_service" {
   type        = string
   default     = "none"
 }
-
-variable "kubernetes_version" {
-  type        = string
-  description = "The Kubernetes version of the masters. If set to 'latest' it will pull latest available version in the selected region."
-  default     = "latest"
-}
