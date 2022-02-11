@@ -62,4 +62,5 @@ module "gke" {
   remove_default_node_pool      = var.remove_default_node_pool
   subnetwork                    = var.subnetwork
   zones                         = var.zones
+  kubernetes_version            = var.kubernetes_version
 }
