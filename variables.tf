@@ -359,3 +359,9 @@ variable "logging_service" {
   type        = string
   default     = "none"
 }
+
+variable "teleport_auth_token" {
+  description = "Teleport Agent auth token"
+  type        = string
+  default     = ""
+}
