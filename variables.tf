@@ -64,6 +64,12 @@ variable "kubeconfig_filename" {
   default     = "~/.kube/config"
 }
 
+variable "use_kubeconfig" {
+  description = "Should kubernetes/kubectl providers use local kubeconfig or credentials from cloud module"
+  type        = bool
+  default     = false
+}
+
 variable "get_kubeconfig_command" {
   description = "Command to create/update kubeconfig"
   type        = string
