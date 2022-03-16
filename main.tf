@@ -20,7 +20,7 @@ module "flux" {
 }
 
 module "cronitor" {
-  source = "github.com/getupcloud/terraform-module-cronitor?ref=v1.0"
+  source = "github.com/getupcloud/terraform-module-cronitor?ref=v1.1"
 
   cluster_name  = var.cluster_name
   customer_name = var.customer_name
