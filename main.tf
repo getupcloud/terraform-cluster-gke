@@ -10,13 +10,17 @@ module "flux" {
   wait           = var.flux_wait
   flux_version   = var.flux_version
 
-  manifests_template_vars = merge({
-    alertmanager_cronitor_id : module.cronitor.cronitor_id
-  }, var.manifests_template_vars)
+  manifests_template_vars = merge(
+    {
+      alertmanager_cronitor_id : module.cronitor.cronitor_id
+    },
+    module.teleport-agent.teleport_agent_config,
+    var.manifests_template_vars
+  )
 }
 
 module "cronitor" {
-  source = "github.com/getupcloud/terraform-module-cronitor?ref=v1.0"
+  source = "github.com/getupcloud/terraform-module-cronitor?ref=v1.1"
 
   cluster_name  = var.cluster_name
   customer_name = var.customer_name
@@ -26,6 +30,17 @@ module "cronitor" {
   pagerduty_key = var.cronitor_pagerduty_key
   api_key       = var.cronitor_api_key
   api_endpoint  = module.gke.endpoint
+}
+
+module "teleport-agent" {
+  source = "github.com/getupcloud/terraform-module-teleport-agent-config?ref=v0.2"
+
+  auth_token       = var.teleport_auth_token
+  cluster_name     = var.cluster_name
+  customer_name    = var.customer_name
+  cluster_sla      = var.cluster_sla
+  cluster_provider = "gke"
+  cluster_region   = var.region
 }
 
 data "google_client_config" "default" {}

@@ -64,6 +64,12 @@ variable "kubeconfig_filename" {
   default     = "~/.kube/config"
 }
 
+variable "use_kubeconfig" {
+  description = "Should kubernetes/kubectl providers use local kubeconfig or credentials from cloud module"
+  type        = bool
+  default     = false
+}
+
 variable "get_kubeconfig_command" {
   description = "Command to create/update kubeconfig"
   type        = string
@@ -358,4 +364,10 @@ variable "logging_service" {
   description = "The logging service that the cluster should write logs to. Available options include logging.googleapis.com, logging.googleapis.com/kubernetes (beta), and none"
   type        = string
   default     = "none"
+}
+
+variable "teleport_auth_token" {
+  description = "Teleport Agent auth token"
+  type        = string
+  default     = ""
 }
