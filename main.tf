@@ -6,7 +6,7 @@ module "flux" {
   source = "github.com/getupcloud/terraform-module-flux?ref=v1.0"
 
   git_repo       = var.flux_git_repo
-  manifests_path = "./clusters/${var.cluster_name}/gke/manifests"
+  manifests_path = var.manifests_path != "" ? var.manifests_path : "./clusters/${var.cluster_name}/gke/manifests"
   wait           = var.flux_wait
   flux_version   = var.flux_version
 
