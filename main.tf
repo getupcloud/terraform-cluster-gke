@@ -3,7 +3,7 @@ module "internet" {
 }
 
 module "flux" {
-  source = "github.com/getupcloud/terraform-module-flux?ref=v1.2"
+  source = "github.com/getupcloud/terraform-module-flux?ref=v1.9"
 
   git_repo       = var.flux_git_repo
   manifests_path = var.manifests_path != "" ? var.manifests_path : "./clusters/${var.cluster_name}/gke/manifests"
