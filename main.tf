@@ -90,4 +90,8 @@ module "gke" {
   subnetwork                    = var.subnetwork
   zones                         = var.zones
   kubernetes_version            = var.kubernetes_version
+
+  depends_on = [
+    shell_script.pre_create
+  ]
 }
