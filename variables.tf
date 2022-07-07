@@ -395,3 +395,9 @@ variable "post_create" {
   type        = list(string)
   default     = []
 }
+
+variable "gke_modules" {
+  description = "Configure GKE modules to install"
+  type        = any
+  default     = {}
+}
