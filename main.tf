@@ -3,23 +3,26 @@ module "internet" {
 }
 
 module "flux" {
-  source = "github.com/getupcloud/terraform-module-flux?ref=v1.10"
+  source = "github.com/getupcloud/terraform-module-flux?ref=v2.1.0"
 
-  git_repo       = var.flux_git_repo
-  manifests_path = var.manifests_path != "" ? var.manifests_path : "./clusters/${var.cluster_name}/gke/manifests"
-  wait           = var.flux_wait
-  flux_version   = var.flux_version
+  git_repo                = var.flux_git_repo
+  manifests_path          = var.manifests_path != "" ? var.manifests_path : "./clusters/${var.cluster_name}/gke/manifests"
+  wait                    = var.flux_wait
+  flux_version            = var.flux_version
+  flux_install_file       = var.flux_install_file
+  manifests_template_vars = local.manifests_template_vars
 
-  manifests_template_vars = merge(
-    {
-      alertmanager_cronitor_id : try(module.cronitor.cronitor_id, "")
-      alertmanager_opsgenie_integration_api_key : try(module.opsgenie.api_key, "")
-      modules : var.gke_modules
-      modules_output : {}
-    },
-    module.teleport-agent.teleport_agent_config,
-    var.manifests_template_vars
-  )
+  # merge(
+  #  {
+  #    alertmanager_cronitor_id : try(module.cronitor.cronitor_id, "")
+  #    alertmanager_opsgenie_integration_api_key : try(module.opsgenie.api_key, "")
+  #    modules : var.gke_modules
+  #    modules_output : {}
+  #  },
+  #  module.teleport-agent.teleport_agent_config,
+  #  var.manifests_template_vars
+  #)
+  debug = var.dump_debug
 }
 
 module "cronitor" {

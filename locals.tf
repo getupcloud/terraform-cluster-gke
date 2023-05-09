@@ -4,6 +4,34 @@ locals {
   token                      = data.google_client_config.default.access_token
   certificate_authority_data = base64decode(module.gke.ca_certificate)
 
-  suffix = random_string.suffix.result
-  secret = random_string.secret.result
+  modules_result = {}
+  # TODO
+  #{
+  #  for name, config in merge(var.modules, local.modules) : name => merge(config, {
+  #    output : config.enabled ? lookup(local.register_modules, name, try(config.output, tomap({}))) : tomap({})
+  #  })
+  #}
+
+  manifests_template_vars = merge(
+    {
+      gcp : {
+        project_id : var.project_id
+        region : var.region
+        zones : var.zones
+        network : var.network
+        subnetwork : var.subnetwork
+        network_project_id : var.network_project_id
+      }
+    },
+    var.manifests_template_vars,
+    {
+      alertmanager_cronitor_id : try(module.cronitor.cronitor_id, "")
+      alertmanager_opsgenie_integration_api_key : try(module.opsgenie.api_key, "")
+      secret : random_string.secret.result
+      suffix : random_string.suffix.result
+      modules : local.modules_result
+    },
+    module.teleport-agent.teleport_agent_config,
+    { for k, v in var.manifests_template_vars : k => v if k != "modules" }
+  )
 }
