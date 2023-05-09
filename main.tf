@@ -23,7 +23,7 @@ module "flux" {
 }
 
 module "cronitor" {
-  source = "github.com/getupcloud/terraform-module-cronitor?ref=v1.4"
+  source = "github.com/getupcloud/terraform-module-cronitor?ref=v2.0.2"
 
   api_endpoint       = module.gke.endpoint
   cronitor_enabled   = var.cronitor_enabled
