@@ -11,18 +11,7 @@ module "flux" {
   flux_version            = var.flux_version
   flux_install_file       = var.flux_install_file
   manifests_template_vars = local.manifests_template_vars
-
-  # merge(
-  #  {
-  #    alertmanager_cronitor_id : try(module.cronitor.cronitor_id, "")
-  #    alertmanager_opsgenie_integration_api_key : try(module.opsgenie.api_key, "")
-  #    modules : var.gke_modules
-  #    modules_output : {}
-  #  },
-  #  module.teleport-agent.teleport_agent_config,
-  #  var.manifests_template_vars
-  #)
-  debug = var.dump_debug
+  debug                   = var.dump_debug
 }
 
 module "cronitor" {
