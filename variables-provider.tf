@@ -271,6 +271,11 @@ variable "impersonate_service_account" {
   default     = ""
 }
 
+variable "service_account_key" {
+  description = "Value of the keyfile for the service account to impersonate"
+  type        = string
+}
+
 variable "master_ipv4_cidr_block" {
   description = "The IP address range for the master network. If empty, a range will be automatically chosen with the default size."
   type        = string
