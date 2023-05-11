@@ -272,7 +272,7 @@ variable "impersonate_service_account" {
 }
 
 variable "service_account_key" {
-  description = "Value of path of the keyfile for the service account to impersonate"
+  description = "Value or path of the keyfile for the service account to impersonate"
   type        = string
   default     = "service-account.json"
 }
