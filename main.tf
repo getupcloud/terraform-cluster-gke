@@ -32,6 +32,7 @@ module "opsgenie" {
   source = "github.com/getupcloud/terraform-module-opsgenie?ref=v1.2"
 
   opsgenie_enabled = var.opsgenie_enabled
+  cluster_name     = var.cluster_name
   customer_name    = var.customer_name
   owner_team_name  = var.opsgenie_team_name
 }
