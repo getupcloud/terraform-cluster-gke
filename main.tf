@@ -52,16 +52,19 @@ data "google_client_config" "default" {}
 
 module "gke" {
   source  = "terraform-google-modules/kubernetes-engine/google//modules/private-cluster"
-  version = "20.0.0"
+  version = "27.0.0"
 
   configure_ip_masq             = var.configure_ip_masq
   default_max_pods_per_node     = var.default_max_pods_per_node
   deploy_using_private_endpoint = var.enable_private_endpoint # yes, duplicated
   enable_private_endpoint       = var.enable_private_endpoint
   enable_private_nodes          = var.enable_private_nodes
+  enable_binary_authorization   = var.enable_binary_authorization
+  enable_cost_allocation        = var.enable_cost_allocation
+  monitoring_enable_managed_prometheus = var.monitoring_enable_managed_prometheus
+  monitoring_enabled_components = var.monitoring_enabled_components
   horizontal_pod_autoscaling    = var.horizontal_pod_autoscaling
   http_load_balancing           = var.http_load_balancing
-  impersonate_service_account   = var.impersonate_service_account
   ip_range_pods                 = var.ip_range_pods
   ip_range_services             = var.ip_range_services
   logging_service               = var.logging_service
