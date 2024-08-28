@@ -3,38 +3,15 @@ module "internet" {
 }
 
 module "flux" {
-  source = "github.com/getupcloud/terraform-module-flux?ref=v2.3.0"
+  source = "github.com/getupcloud/terraform-module-flux?ref=v2.5.1"
 
   git_repo                = var.flux_git_repo
-  manifests_path          = var.manifests_path != "" ? var.manifests_path : "./clusters/${var.cluster_name}/gke/manifests"
+  manifests_path          = "./clusters/${var.cluster_name}/eks/manifests"
   wait                    = var.flux_wait
   flux_version            = var.flux_version
   flux_install_file       = var.flux_install_file
   manifests_template_vars = local.manifests_template_vars
   debug                   = var.dump_debug
-}
-
-module "cronitor" {
-  source = "github.com/getupcloud/terraform-module-cronitor?ref=v2.0.2"
-
-  api_endpoint       = module.gke.endpoint
-  cronitor_enabled   = var.cronitor_enabled
-  cluster_name       = var.cluster_name
-  customer_name      = var.customer_name
-  cluster_sla        = var.cluster_sla
-  suffix             = "gke"
-  tags               = [var.region]
-  pagerduty_key      = var.cronitor_pagerduty_key
-  notification_lists = var.cronitor_notification_lists
-}
-
-module "opsgenie" {
-  source = "github.com/getupcloud/terraform-module-opsgenie?ref=v1.2"
-
-  opsgenie_enabled = var.opsgenie_enabled
-  cluster_name     = var.cluster_name
-  customer_name    = var.customer_name
-  owner_team_name  = var.opsgenie_team_name
 }
 
 module "teleport-agent" {
